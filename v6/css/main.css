@@ -1,0 +1,90 @@
+root { 
+    display: block;
+}
+
+body{
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(34,197,94,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(59,130,246,0.10) 0%, transparent 60%),
+        linear-gradient(160deg, #020c18 0%, #051a2e 50%, #0a1628 100%);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: repeating-linear-gradient(
+        90deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 60px
+    ), repeating-linear-gradient(
+        0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 60px
+    );
+}
+
+*, *:before, *:after {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+     
+input, input:before, input:after {
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+
+::selection { background: transparent;color:inherit; }
+::-moz-selection { background: transparent;color:inherit; }
+
+#canvas{
+    position: fixed;
+}
+
+canvas {
+    image-rendering:-webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    -ms-touch-action: none;
+}
+
+.ani_hack{
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* mobile webkit */
+}
+
+/***************FONTS*******************/
+
+.check-fonts{
+        position: fixed;
+        opacity:0;
+}
+
+.check-font-1{
+        font-family: 'TradeGothic';
+}
+
+
+@font-face {
+    font-family: 'TradeGothic';
+    src: url('TradeGothic-Bold.woff2') format('woff2'),
+        url('TradeGothic-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
