@@ -1,0 +1,102 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   AVATAR SYSTEM — Shared Styles
+   Used across: CMpHUD, CMpWinPanel, CModeSelect, CInterface
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Base Avatar Image ─── */
+.player-avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    image-rendering: auto;
+    display: block;
+    /* Fallback background while loading */
+    background: linear-gradient(135deg, #1a2a4a 0%, #0a1628 100%);
+    /* Prevent drag/select */
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+}
+
+/* ─── Avatar Loading Placeholder ─── */
+.player-avatar[src=""],
+.player-avatar:not([src]) {
+    background: linear-gradient(135deg, #2a3a5a 0%, #1a2838 100%);
+    animation: avatarLoadPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes avatarLoadPulse {
+    from { opacity: 0.5; }
+    to   { opacity: 0.8; }
+}
+
+/* ─── Mode Select Avatar Preview ─── */
+.ms-avatar-preview {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.15),
+                0 4px 12px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #1a2a4a 0%, #0a1628 100%);
+    display: block;
+    margin: 0 auto;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.ms-avatar-preview:hover {
+    border-color: rgba(255, 215, 0, 0.7);
+    box-shadow: 0 0 24px rgba(255, 215, 0, 0.25),
+                0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Waiting Screen Avatar ─── */
+.ms-waiting-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2),
+                0 0 40px rgba(255, 215, 0, 0.08);
+    animation: waitingAvatarPulse 2s ease-in-out infinite;
+}
+
+@keyframes waitingAvatarPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.2),
+                    0 0 40px rgba(255, 215, 0, 0.08);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 28px rgba(255, 215, 0, 0.35),
+                    0 0 50px rgba(255, 215, 0, 0.12);
+    }
+}
+
+/* ─── Responsive — Landscape Mobile ─── */
+@media (max-height: 500px) {
+    .ms-avatar-preview {
+        width: 36px;
+        height: 36px;
+        border-width: 1.5px;
+    }
+    .ms-waiting-avatar {
+        width: 44px;
+        height: 44px;
+        border-width: 1.5px;
+    }
+}
+
+/* ─── Responsive — Portrait Mobile ─── */
+@media (max-width: 420px) {
+    .ms-avatar-preview {
+        width: 44px;
+        height: 44px;
+    }
+    .ms-waiting-avatar {
+        width: 52px;
+        height: 52px;
+    }
+}
